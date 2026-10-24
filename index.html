@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Paolo Vizioli</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Paolo Vizioli, Senior Actuary in the London Market: pricing, reserving and capital across Lloyd's, MGAs and specialty carriers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<style>
+/* Layout: crimson masthead band with monogram, then one ivory reading column of short sections; experience as a dated timeline. */
+:root{
+  --crimson:#8E1F2F; --crimson-deep:#5E1220; --gold:#F0BC42; --gold-ink:#8A6418;
+  --bg:#FBF6EC; --surface:#FFFFFF; --fg:#2A1E1C; --muted:#6B5853; --line:#E6DACB;
+  --band:#8E1F2F; --band-fg:#FBF6EC; --chip:#F4EADB;
+  --display:"Cinzel", "Trajan Pro", Georgia, serif;
+  --body:"Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --step-0:1.0625rem; --step-1:1.25rem; --step-2:1.6rem; --step-3:clamp(2rem,6vw,3.1rem);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1A1112; --surface:#241718; --fg:#F3EADD; --muted:#BFAEA6; --line:#3A2829;
+  --band:#5E1220; --band-fg:#FBF6EC; --chip:#2E1D1F; --gold-ink:#F0BC42; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1A1112; --surface:#241718; --fg:#F3EADD; --muted:#BFAEA6; --line:#3A2829;
+  --band:#5E1220; --band-fg:#FBF6EC; --chip:#2E1D1F; --gold-ink:#F0BC42; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 var(--step-0)/1.6 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}
+.wrap{max-width:60rem;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+
+/* Masthead */
+.band{background:var(--band);color:var(--band-fg);border-bottom:4px solid var(--gold)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.9rem;flex-wrap:wrap}
+.mark{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-family:var(--display);font-weight:600;letter-spacing:.12em;font-size:.95rem}
+.mark svg{width:34px;height:34px;flex:none}
+nav ul{display:flex;gap:1.1rem;list-style:none;margin:0;padding:0;flex-wrap:wrap;font-size:.9rem;letter-spacing:.06em;text-transform:uppercase}
+nav ul a{text-decoration:none;opacity:.85}
+nav ul a:hover{opacity:1;color:var(--gold)}
+
+.hero .wrap{display:grid;grid-template-columns:auto 1fr;gap:2.2rem;align-items:center;padding-block:2.6rem 3rem}
+.portrait{width:168px;height:168px;border-radius:50%;border:3px solid var(--gold);display:grid;place-items:center;background:var(--crimson-deep);overflow:hidden}
+.portrait span{font-family:var(--display);font-weight:700;font-size:3.6rem;color:var(--gold);letter-spacing:.04em}
+.portrait img{width:100%;height:100%;object-fit:cover}
+.hero h1{font-family:var(--display);font-weight:600;font-size:var(--step-3);line-height:1.1;margin:0 0 .35rem;letter-spacing:.04em;text-wrap:balance}
+.role{font-size:var(--step-1);margin:0 0 .9rem;color:var(--gold)}
+.creds{font-size:.95rem;letter-spacing:.04em;margin:0 0 1.4rem;opacity:.92}
+.cta{display:flex;gap:.7rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1.1rem;border-radius:3px;font-weight:600;text-decoration:none;font-size:.95rem;border:1px solid var(--gold);cursor:pointer;font-family:inherit}
+.btn.primary{background:var(--gold);color:#2A1E1C}
+.btn.ghost{background:transparent;color:var(--band-fg)}
+.btn:hover{filter:brightness(1.08)}
+
+/* Sections */
+main section{padding-block:2.8rem;border-bottom:1px solid var(--line)}
+main section:last-child{border-bottom:0}
+.eyebrow{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-ink);font-weight:700;margin:0 0 .4rem}
+h2{font-family:var(--display);font-weight:600;font-size:var(--step-2);margin:0 0 1.2rem;letter-spacing:.03em;text-wrap:balance}
+.lead{max-width:65ch}
+.lead p{margin:0 0 1rem}
+
+.regimes{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.4rem;padding:0;list-style:none}
+.regimes li{background:var(--chip);border:1px solid var(--line);padding:.25rem .7rem;border-radius:2px;font-size:.88rem;font-weight:600}
+.regimes-label{font-size:.85rem;color:var(--muted);margin:1.6rem 0 0}
+
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.tile{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--crimson);padding:1.1rem 1.15rem 1.2rem;min-width:0}
+.tile h3{font-family:var(--display);font-size:1.02rem;margin:0 0 .5rem;letter-spacing:.04em}
+.tile p{margin:0;font-size:.97rem;color:var(--muted)}
+
+.timeline{list-style:none;margin:0;padding:0;border-left:2px solid var(--line)}
+.timeline li{position:relative;padding:0 0 1.7rem 1.5rem}
+.timeline li::before{content:"";position:absolute;left:-7px;top:.45rem;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--crimson)}
+.timeline li.now::before{background:var(--gold);border-color:var(--gold)}
+.when{font-size:.85rem;color:var(--muted);font-variant-numeric:tabular-nums;letter-spacing:.03em}
+.timeline h3{font-size:1.08rem;margin:.1rem 0 .1rem;font-weight:700}
+.timeline .org{color:var(--gold-ink);font-weight:600}
+.timeline p{margin:.35rem 0 0;max-width:65ch;color:var(--fg)}
+.timeline ul{margin:.4rem 0 0;padding-left:1.1rem;max-width:65ch}
+.timeline ul li{padding:0 0 .25rem}
+.timeline ul li::before{display:none}
+
+.quals{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.2rem 2rem;list-style:none;margin:0;padding:0}
+.quals li{padding:.75rem 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:1rem;min-width:0}
+.quals b{font-weight:700}
+.quals .yr{color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.quals small{display:block;color:var(--muted);font-size:.88rem}
+
+.contact-box{display:flex;flex-wrap:wrap;align-items:center;gap:.8rem}
+.email{font-weight:700;font-size:var(--step-1);user-select:all;word-break:break-all}
+.copy{background:transparent;color:var(--fg);border:1px solid var(--line)}
+.note{color:var(--muted);font-size:.95rem;margin:.9rem 0 0;max-width:65ch}
+
+footer{background:var(--band);color:var(--band-fg);font-size:.85rem}
+footer .wrap{padding-block:1.2rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;opacity:.9}
+
+@media (max-width:760px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .quals{grid-template-columns:1fr}
+}
+@media (max-width:540px){
+  .hero .wrap{grid-template-columns:1fr;gap:1.4rem;padding-block:2rem 2.4rem}
+  .portrait{width:120px;height:120px}
+  .portrait span{font-size:2.6rem}
+  .grid{grid-template-columns:1fr}
+  nav ul{gap:.8rem;font-size:.8rem}
+}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+</head>
+<body>
+<header class="band">
+  <nav aria-label="Main">
+    <div class="wrap">
+      <a class="mark" href="#top" aria-label="Paolo Vizioli, home">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18.5" fill="none" stroke="#F0BC42" stroke-width="1.6"/><text x="20" y="25.5" text-anchor="middle" font-family="Cinzel, Georgia, serif" font-weight="700" font-size="14" fill="#F0BC42" letter-spacing="1">PV</text></svg>
+        PAOLO VIZIOLI
+      </a>
+      <ul>
+        <li><a href="#profile">Profile</a></li>
+        <li><a href="#expertise">Expertise</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#qualifications">Qualifications</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="hero" id="top">
+    <div class="wrap">
+      <div class="portrait"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAUEBAYFBQUGBgYHCQ4JCQgICRINDQoOFRIWFhUSFBQXGiEcFxgfGRQUHScdHyIjJSUlFhwpLCgkKyEkJST/2wBDAQYGBgkICREJCREkGBQYJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCT/wAARCAFoAWgDASIAAhEBAxEB/8QAHQABAAEFAQEBAAAAAAAAAAAAAAQBAgMFBgcICf/EADwQAAEEAQIEBAUBBgUEAwEAAAEAAgMRBBIhBTFBUQYTImEHMnGBkRRCUqGxwdEIFSPh8BZDcvEkYoIz/8QAGQEBAAMBAQAAAAAAAAAAAAAAAAECAwQF/8QAJREBAQACAgIDAAIDAQEAAAAAAAECEQMhEjEEQVETIhQyYXGR/9oADAMBAAIRAxEAPwD6pREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQERLpARQ+IcWxOHNHnzMY47hpO5+y0snizGbI5smU2K92Nc35ljlzSXS0xtdKXAKwzUaDHG/Zc7j8d/UktZkRx1yptj7m1kfxnKgBDy1++zmNu/sqfy2+k+DfCYHm1zfqFeHg9QucZx4PaQXM118pB3WKXiMrWtmbC/H1C2kWWu+o6KP5rE+DqbRc5h+JmPsP+dpALf62t3iZrMtmpu1GiCtMOWXpW42JCJaLZUREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQERYJM2GMkF4sdt6VcspPZpkkmbEBd2eQAtafN4qZY5jFN5EUYIdJW4I50uV8W/EXFZr4fw18mXlE0W4wst/8A1yC8/wAzN8VSxucHysYToZHrG55npusMrll69NJJPbsuIS5uRODiuZE9+9udqkr957juPoFzXExJht1O426bIDj6WsDmg/fdcxPxjiHBpXQ5bJQbIe929nrRC5/ivF8h073Bzg3Z2zj+VExsTb+O0h8TPhy9OZ5rAfllY3SAe5aOa63g3xGjjIbMRK7TTJCKG3Wl47Hxd+SA4gyFvIE0fdX4nFQXHdw6HcUnhtHm9pd454bkucf0j3m7oEb/APCtW7xF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" alt="Paolo Vizioli" width="360" height="360"></div>
+      <div>
+        <h1>Paolo Vizioli</h1>
+        <p class="role">Senior Actuary, London Market</p>
+        <p class="creds">Actuary (IFoA) · CFA · ACMA (CIMA) · MBA · Chartered Accountant (Italy) · Cert CII (London Market)</p>
+        <div class="cta">
+          <a class="btn primary" href="#contact">Get in touch</a>
+          <a class="btn ghost" href="#experience">View experience</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="profile"><div class="wrap">
+    <p class="eyebrow">Profile</p>
+    <h2>Pricing, reserving and capital, with a finance background</h2>
+    <div class="lead">
+      <p>I am a senior London Market actuary covering pricing, reserving and capital across Lloyd's syndicates and managing agents, MGAs, P&amp;I and specialty carriers. I currently act as de facto Deputy Chief Actuary at MNK Group, where I co-lead the group pricing transformation and built and run the MGA reserving framework.</p>
+      <p>Before moving into actuarial work I spent a decade in valuation, strategy and FP&amp;A at PwC, Aviva and Prudential. I am at home building the model and explaining the answer to boards, audit and reserve committees, auditors, capital providers and rating agencies, and suited to roles where one person covers the whole actuarial function.</p>
+    </div>
+    <p class="regimes-label">Capital and reporting regimes covered</p>
+    <ul class="regimes" aria-label="Capital and reporting regimes">
+      <li>Solvency II</li><li>Solvency UK</li><li>IFRS 17</li><li>BMA BSCR</li><li>AM Best BCAR</li><li>US RBC</li><li>Lloyd's SBF</li>
+    </ul>
+  </div></section>
+
+  <section id="expertise"><div class="wrap">
+    <p class="eyebrow">Expertise</p>
+    <h2>Areas of work</h2>
+    <div class="grid">
+      <article class="tile"><h3>Pricing</h3><p>Experience and exposure rating, model build, review and validation, portfolio reviews, rate monitoring and case pricing with underwriters; pricing platform delivery on HX Renew.</p></article>
+      <article class="tile"><h3>Reserving</h3><p>Chain ladder, Bornhuetter-Ferguson, expected loss ratio and Mack; quarterly and year-end close on GAAP, Solvency II and IFRS 17 bases; frameworks built from scratch.</p></article>
+      <article class="tile"><h3>Capital and rating agencies</h3><p>Solvency II and Solvency UK standard formula, BMA BSCR, US RBC and AM Best BCAR; capital adequacy for M&amp;A and group ratings; internal model validation support.</p></article>
+      <article class="tile"><h3>IFRS 17 and reporting</h3><p>Balance-sheet build, Solvency II to IFRS 17 reconciliations, variance analysis, risk adjustment, ULR and ENID assumptions.</p></article>
+      <article class="tile"><h3>Lloyd's planning</h3><p>Syndicate business forecasts, QMB and QMA, QSR, ASR and TPD returns, loss ratio reviews, re-forecasting and start-up syndicate loss ratios.</p></article>
+      <article class="tile"><h3>Corporate finance</h3><p>Due diligence, valuation, business planning and five-year group plans; modelling for capital providers. Tools: Excel and VBA, SQL, R, Python.</p></article>
+    </div>
+  </div></section>
+
+  <section id="experience"><div class="wrap">
+    <p class="eyebrow">Experience</p>
+    <h2>Career</h2>
+    <ol class="timeline">
+      <li class="now">
+        <span class="when">Oct 2025 – present</span>
+        <h3>Senior Actuary (de facto Deputy Chief Actuary) · <span class="org">MNK Group</span></h3>
+        <ul>
+          <li>Second to the Chief Actuary across pricing, reserving and capital for the group's MGA and carrier businesses.</li>
+          <li>Built the MGA reserving framework and run quarterly reserving; supervise subsidiaries' quarterly submissions.</li>
+          <li>Co-lead the pricing transformation on HX Renew: peer-reviewed the Property model, built the Construction model.</li>
+          <li>Capital and financial strength analysis across four regimes, supporting the group's AM Best rating.</li>
+        </ul>
+      </li>
+      <li>
+        <span class="when">Apr 2024 – Sep 2025</span>
+        <h3>Project Actuary (interim) · <span class="org">The Fidelis Partnership</span></h3>
+        <p>Set the initial SBF loss ratios for a start-up syndicate and ran its quarterly reserving through its first underwriting years; owned the monthly premium earnings process.</p>
+      </li>
+      <li>
+        <span class="when">Apr 2022 – Apr 2024</span>
+        <h3>IFRS 17 Actuarial Consultant (interim) · <span class="org">Beazley</span></h3>
+        <p>Part of the IFRS 17 go-live team: interim balance-sheet model for Group and Audit Committee reporting, Solvency II to IFRS 17 reconciliations, ULR and ENID validation.</p>
+      </li>
+      <li>
+        <span class="when">Dec 2020 – Apr 2022</span>
+        <h3>Reserving Actuary · <span class="org">London P&amp;I Club</span></h3>
+        <p>GAAP reserving with deterministic and stochastic methods; Solvency II Technical Provisions and SCR for the Group and EU subsidiary; started IFRS 17 for the European subsidiary.</p>
+      </li>
+      <li>
+        <span class="when">Oct 2019 – Oct 2020</span>
+        <h3>Syndicate Reserving Actuary (interim) · <span class="org">AXA XL</span></h3>
+        <p>Reserving for a Lloyd's syndicate across Property, Casualty, Marine and Specialty; US Trust Fund reserving, QMB and QMA review, SAO support, Technical Provisions and SBF loss ratio reviews.</p>
+      </li>
+      <li>
+        <span class="when">May 2017 – Sep 2019</span>
+        <h3>Actuarial and Financial Consultant (interim) · <span class="org">Hamilton Underwriting</span></h3>
+        <p>Validated Property D&amp;F, PI and Marine Liability pricing models and case-priced Property D&amp;F risks; SCR standard formula and Lloyd's returns; re-forecasts, five-year plan and SBF.</p>
+      </li>
+      <li>
+        <span class="when">May 2013 – Feb 2017</span>
+        <h3>FP&amp;A Manager / Nearly-Qualified Actuary · <span class="org">Pioneer Underwriting</span></h3>
+        <p>Built an integrated YOA, GAAP and Solvency II model for Lloyd's Syndicate 1980; forecasts, plans and SBF; reserving analysis for a key line.</p>
+      </li>
+      <li>
+        <span class="when">Jul 2011 – Jan 2013</span>
+        <h3>FP&amp;A Manager · <span class="org">Omega Insurance Holdings (now Canopius)</span></h3>
+        <p>Group and Lloyd's syndicate FP&amp;A: quarterly re-forecasts, annual plan and SBF.</p>
+      </li>
+      <li>
+        <span class="when">2000 – 2011</span>
+        <h3>Finance and strategy · <span class="org">PwC, Aviva, Prudential, DaimlerChrysler Financial Services</span></h3>
+        <p>Valuation (PwC Financial Services), strategic capital management and planning (Aviva), strategy and corporate development (Prudential), controlling and analysis (DaimlerChrysler FS).</p>
+      </li>
+    </ol>
+  </div></section>
+
+  <section id="qualifications"><div class="wrap">
+    <p class="eyebrow">Qualifications</p>
+    <h2>Professional qualifications and education</h2>
+    <ul class="quals">
+      <li><span><b>Actuarial examinations</b><small>Institute and Faculty of Actuaries · 14 passed, incl. GI Reserving and Capital, GI Pricing</small></span></li>
+      <li><span><b>CFA Charterholder</b><small>CFA Institute · all levels first time</small></span><span class="yr">2004</span></li>
+      <li><span><b>ACMA</b><small>Chartered Institute of Management Accountants</small></span><span class="yr">2002</span></li>
+      <li><span><b>Cert CII (London Market)</b><small>Chartered Insurance Institute</small></span><span class="yr">2018</span></li>
+      <li><span><b>MBA</b><small>LUISS "G. Carli", Rome · First class</small></span><span class="yr">1996</span></li>
+      <li><span><b>Chartered Accountant (Italy)</b><small>ACA equivalent</small></span><span class="yr">1993</span></li>
+      <li><span><b>BSc Business Administration and Economics</b><small>Università "G. D'Annunzio" · 110/110 cum laude</small></span><span class="yr">1992</span></li>
+      <li><span><b>Languages</b><small>English and Italian, native</small></span></li>
+    </ul>
+  </div></section>
+
+  <section id="contact"><div class="wrap">
+    <p class="eyebrow">Contact</p>
+    <h2>Get in touch</h2>
+    <div class="contact-box">
+      <a class="email" href="mailto:paolovizioli@gmail.com">paolovizioli@gmail.com</a>
+      <button class="btn copy" id="copy-email" type="button">Copy email</button>
+    </div>
+    <p class="note">Based in London. A full CV is available on request.</p>
+  </div></section>
+</main>
+
+<footer>
+  <div class="wrap"><span>© 2026 Paolo Vizioli</span><span>London, United Kingdom</span></div>
+</footer>
+
+<script>
+document.getElementById('copy-email').addEventListener('click', function(){
+  var b=this, t='paolovizioli@gmail.com';
+  function done(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy email'},1800)}
+  try{navigator.clipboard.writeText(t).then(done,function(){sel()})}catch(e){sel()}
+  function sel(){var r=document.createRange();r.selectNodeContents(document.querySelector('.email'));var s=getSelection();s.removeAllRanges();s.addRange(r)}
+});
+</script>
+</body>
+</html>
