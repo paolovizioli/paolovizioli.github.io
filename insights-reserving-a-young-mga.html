@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Reserving a young MGA: when the assumptions are the answer</title>
+<meta name="description" content="How reserving theory applies to a young London Market MGA: Bornhuetter–Ferguson with Lloyd&#x27;s benchmarks, a two-tier ELR for proportional treaty, quarterly AvE analysis, key issues and future developments.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Reserving a young MGA: when the assumptions are the answer">
+<meta property="og:description" content="How reserving theory applies to a young London Market MGA: Bornhuetter–Ferguson with Lloyd&#x27;s benchmarks, a two-tier ELR for proportional treaty, quarterly AvE analysis, key issues and future developments.">
+<meta property="og:url" content="https://paolovizioli.github.io/insights-reserving-a-young-mga.html">
+<meta property="og:image" content="https://paolovizioli.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<style>
+/* Layout: crimson masthead band with monogram, then one ivory reading column of short sections; experience as a dated timeline. */
+:root{
+  --crimson:#8E1F2F; --crimson-deep:#5E1220; --gold:#F0BC42; --gold-ink:#8A6418;
+  --bg:#FBF6EC; --surface:#FFFFFF; --fg:#2A1E1C; --muted:#6B5853; --line:#E6DACB;
+  --band:#8E1F2F; --band-fg:#FBF6EC; --chip:#F4EADB;
+  --display:"Cinzel", "Trajan Pro", Georgia, serif;
+  --body:"Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --step-0:1.0625rem; --step-1:1.25rem; --step-2:1.6rem; --step-3:clamp(2rem,6vw,3.1rem);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1A1112; --surface:#241718; --fg:#F3EADD; --muted:#BFAEA6; --line:#3A2829;
+  --band:#5E1220; --band-fg:#FBF6EC; --chip:#2E1D1F; --gold-ink:#F0BC42; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1A1112; --surface:#241718; --fg:#F3EADD; --muted:#BFAEA6; --line:#3A2829;
+  --band:#5E1220; --band-fg:#FBF6EC; --chip:#2E1D1F; --gold-ink:#F0BC42; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 var(--step-0)/1.6 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}
+.wrap{max-width:60rem;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+
+/* Masthead */
+.band{background:var(--band);color:var(--band-fg);border-bottom:4px solid var(--gold)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.9rem;flex-wrap:wrap}
+.mark{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-family:var(--display);font-weight:600;letter-spacing:.12em;font-size:.95rem}
+.mark svg{width:34px;height:34px;flex:none}
+nav ul{display:flex;gap:1.1rem;list-style:none;margin:0;padding:0;flex-wrap:wrap;font-size:.9rem;letter-spacing:.06em;text-transform:uppercase}
+nav ul a{text-decoration:none;opacity:.85}
+nav ul a:hover{opacity:1;color:var(--gold)}
+
+.hero .wrap{display:grid;grid-template-columns:auto 1fr;gap:2.2rem;align-items:center;padding-block:2.6rem 3rem}
+.portrait{width:168px;height:168px;border-radius:50%;border:3px solid var(--gold);display:grid;place-items:center;background:var(--crimson-deep);overflow:hidden}
+.portrait span{font-family:var(--display);font-weight:700;font-size:3.6rem;color:var(--gold);letter-spacing:.04em}
+.portrait img{width:100%;height:100%;object-fit:cover}
+.hero h1{font-family:var(--display);font-weight:600;font-size:var(--step-3);line-height:1.1;margin:0 0 .35rem;letter-spacing:.04em;text-wrap:balance}
+.role{font-size:var(--step-1);margin:0 0 .9rem;color:var(--gold)}
+.creds{font-size:.95rem;letter-spacing:.04em;margin:0 0 1.4rem;opacity:.92}
+.cta{display:flex;gap:.7rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1.1rem;border-radius:3px;font-weight:600;text-decoration:none;font-size:.95rem;border:1px solid var(--gold);cursor:pointer;font-family:inherit}
+.btn.primary{background:var(--gold);color:#2A1E1C}
+.btn.ghost{background:transparent;color:var(--band-fg)}
+.btn:hover{filter:brightness(1.08)}
+
+/* Sections */
+main section{padding-block:2.8rem;border-bottom:1px solid var(--line)}
+main section:last-child{border-bottom:0}
+.eyebrow{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-ink);font-weight:700;margin:0 0 .4rem}
+h2{font-family:var(--display);font-weight:600;font-size:var(--step-2);margin:0 0 1.2rem;letter-spacing:.03em;text-wrap:balance}
+.lead{max-width:65ch}
+.lead p{margin:0 0 1rem}
+
+.regimes{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.4rem;padding:0;list-style:none}
+.regimes li{background:var(--chip);border:1px solid var(--line);padding:.25rem .7rem;border-radius:2px;font-size:.88rem;font-weight:600}
+.regimes-label{font-size:.85rem;color:var(--muted);margin:1.6rem 0 0}
+
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.tile{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--crimson);padding:1.1rem 1.15rem 1.2rem;min-width:0}
+.tile h3{font-family:var(--display);font-size:1.02rem;margin:0 0 .5rem;letter-spacing:.04em}
+.tile p{margin:0;font-size:.97rem;color:var(--muted)}
+
+.timeline{list-style:none;margin:0;padding:0;border-left:2px solid var(--line)}
+.timeline li{position:relative;padding:0 0 1.7rem 1.5rem}
+.timeline li::before{content:"";position:absolute;left:-7px;top:.45rem;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--crimson)}
+.timeline li.now::before{background:var(--gold);border-color:var(--gold)}
+.when{font-size:.85rem;color:var(--muted);font-variant-numeric:tabular-nums;letter-spacing:.03em}
+.timeline h3{font-size:1.08rem;margin:.1rem 0 .1rem;font-weight:700}
+.timeline .org{color:var(--gold-ink);font-weight:600}
+.timeline p{margin:.35rem 0 0;max-width:65ch;color:var(--fg)}
+.timeline ul{margin:.4rem 0 0;padding-left:1.1rem;max-width:65ch}
+.timeline ul li{padding:0 0 .25rem}
+.timeline ul li::before{display:none}
+
+.quals{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.2rem 2rem;list-style:none;margin:0;padding:0}
+.quals li{padding:.75rem 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:1rem;min-width:0}
+.quals b{font-weight:700}
+.quals .yr{color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.quals small{display:block;color:var(--muted);font-size:.88rem}
+
+.contact-box{display:flex;flex-wrap:wrap;align-items:center;gap:.8rem}
+.email{font-weight:700;font-size:var(--step-1);user-select:all;word-break:break-all}
+.copy{background:transparent;color:var(--fg);border:1px solid var(--line)}
+.note{color:var(--muted);font-size:.95rem;margin:.9rem 0 0;max-width:65ch}
+
+footer{background:var(--band);color:var(--band-fg);font-size:.85rem}
+footer .wrap{padding-block:1.2rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;opacity:.9}
+
+@media (max-width:760px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .quals{grid-template-columns:1fr}
+}
+@media (max-width:540px){
+  .hero .wrap{grid-template-columns:1fr;gap:1.4rem;padding-block:2rem 2.4rem}
+  .portrait{width:120px;height:120px}
+  .portrait span{font-size:2.6rem}
+  .grid{grid-template-columns:1fr}
+  nav ul{gap:.8rem;font-size:.8rem}
+}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+
+/* Case studies */
+.page-head .wrap{padding-block:2.2rem 2.6rem}
+.page-head h1{font-family:var(--display);font-weight:600;font-size:clamp(1.9rem,5vw,2.6rem);margin:0 0 .6rem;letter-spacing:.04em}
+.page-head p{margin:0;max-width:65ch;opacity:.92}
+.cases{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1.2rem}
+.case{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--crimson);padding:1.3rem 1.4rem 1.2rem}
+.case-meta{display:flex;flex-wrap:wrap;gap:.3rem 1rem;font-size:.85rem;color:var(--muted);margin:0 0 .3rem}
+.case-meta .org{color:var(--gold-ink);font-weight:700;letter-spacing:.02em}
+.case h2{font-family:var(--display);font-size:1.2rem;margin:0 0 1rem;letter-spacing:.03em}
+.case-body{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem}
+.case-body div{min-width:0}
+.case-body h3{font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-ink);margin:0 0 .35rem;font-weight:700}
+.case-body p{margin:0;font-size:.97rem}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;list-style:none;margin:1rem 0 0;padding:0}
+.tags li{background:var(--chip);border:1px solid var(--line);font-size:.8rem;padding:.15rem .55rem;border-radius:2px}
+.note-line{color:var(--muted);font-size:.95rem;margin:1.6rem 0 0;max-width:65ch}
+@media (max-width:760px){.case-body{grid-template-columns:1fr;gap:.9rem}}
+
+/* Insights */
+.articles{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1.2rem}
+.card{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--crimson);padding:1.3rem 1.4rem 1.2rem}
+.card .meta{font-size:.85rem;color:var(--muted);margin:0 0 .3rem}
+.card h2{font-family:var(--display);font-size:1.2rem;margin:0 0 .6rem;letter-spacing:.03em}
+.card h2 a{text-decoration:none}
+.card h2 a:hover{color:var(--crimson)}
+.card p{margin:0;max-width:65ch}
+.more{display:inline-block;margin-top:.8rem;font-weight:600;color:var(--gold-ink)}
+article.post{max-width:68ch}
+article.post h2{font-size:1.25rem;margin:2rem 0 .8rem}
+article.post p{margin:0 0 1rem}
+article.post ul{margin:0 0 1.2rem;padding-left:1.2rem}
+article.post li{margin:0 0 .45rem}
+.byline{font-size:.9rem;opacity:.9;margin:.4rem 0 0}
+.back{display:inline-block;margin-top:1.6rem;font-weight:600;color:var(--gold-ink)}
+</style>
+<style>
+article.post h3{font-size:1.05rem;margin:1.6rem 0 .6rem;font-weight:700}
+article.post ol{margin:0 0 1.2rem;padding-left:1.4rem}
+article.post li p{margin:.5rem 0 0}
+article.post .formula{font-style:italic;background:var(--chip);border-left:3px solid var(--gold);padding:.5rem .8rem;margin:.6rem 0 1rem}
+article.post .formula i{font-style:italic}
+.standfirst{font-size:1.05rem;opacity:.92;margin:.5rem 0 0;max-width:65ch}
+.signoff{margin-top:2rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<header class="band">
+  <nav aria-label="Main">
+    <div class="wrap">
+      <a class="mark" href="index.html" aria-label="Paolo Vizioli, home">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18.5" fill="none" stroke="#F0BC42" stroke-width="1.6"/><text x="20" y="25.5" text-anchor="middle" font-family="Cinzel, Georgia, serif" font-weight="700" font-size="14" fill="#F0BC42" letter-spacing="1">PV</text></svg>
+        PAOLO VIZIOLI
+      </a>
+      <ul>
+        <li><a href="index.html#profile">Profile</a></li>
+        <li><a href="index.html#expertise">Expertise</a></li>
+        <li><a href="index.html#experience">Experience</a></li>
+        <li><a href="case-studies.html">Case studies</a></li>
+        <li><a href="insights.html" aria-current="page">Insights</a></li>
+        <li><a href="index.html#qualifications">Qualifications</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="page-head">
+    <div class="wrap">
+      <p class="eyebrow" style="color:var(--gold)">Insights · Reserving</p>
+      <h1>Reserving a young MGA: when the assumptions are the answer</h1>
+      <p class="standfirst"><i>How established reserving theory applies to a growing London Market portfolio, where the problems usually lie, and where good practice is heading.</i></p>
+      <p class="byline">Paolo Vizioli · 13 November 2026</p>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section><div class="wrap">
+    <article class="post">
+      <p>In the early years of an insurer or MGA writing facultative insurance and reinsurance, non-proportional and proportional treaty business across several classes, most of the estimated ultimate claims are not yet backed by reported claims. Reserving theory still applies, but the weight of the work shifts. Projecting claims matters less, and choosing, documenting and challenging assumptions matters more. This article summarises the theory, explains the practical reserving framework we have developed for a young MGA, and draws out the main issues and the developments we expect.</p>
+      <h2>1. A short summary of reserving theory</h2>
+      <p><b>What a reserve is.</b> A reserve is the amount an insurer must hold at the valuation date for future claims outgo and related liabilities. The IBNR (incurred but not reported) provision covers the cost of claims already incurred above what has been reported so far. It has two parts:</p>
+      <ul>
+      <li><span><b>IBNER (incurred but not enough reported):</b> movement on claims already reported.</span></li>
+      <li><span><b>IBNYR (incurred but not yet reported), or pure IBNR:</b> claims that have happened but have not yet been reported.</span></li>
+      </ul>
+      <p><b>The purpose determines the basis.</b> A reserving basis sets out the purpose, the level of calculation, the allowance for inflation, whether reserves are discounted, and how unexpired risk is treated. Reserves that are wrong in either direction distort reported results, solvency, tax and pricing.</p>
+      <p><b>The main deterministic methods:</b></p>
+      <ul>
+      <li><span><b>Chain ladder:</b> projects cumulative claims using past development ratios. It works well on stable, credible and mature data, and poorly on immature or sparse data or data dominated by large losses.</span></li>
+      <li><span><b>Expected loss ratio (ELR):</b> ultimate = expected loss ratio × premium. It is simple, but it ignores claims experience entirely.</span></li>
+      <li><span><b>Bornhuetter–Ferguson (BF):</b> blends an independent prior estimate with emerging claims:</span><p class="formula"><i>Ultimate = Claims to date + (1 − 1/f) × Prior ultimate</i></p><p>where f is the development-to-ultimate factor. Young years rely on the prior and mature years on their own experience. BF is only as good as its prior and its development pattern. It can also behave perversely when incurred claims fall over time, for example as prudent case reserves are released.</p></li>
+      <li><span><b>Exposure and ratio methods:</b> bottom-up or top-down loss assessments, survival ratios and IBNR-to-outstanding ratios. They are used where statistical methods fail, such as for catastrophes, non-standard risks or a lack of data.</span></li>
+      </ul>
+      <p><b>Reinsurance is harder.</b> Reporting delays are longer, claims tend to develop upwards, exposures are heterogeneous, data are sparse and benchmarks are less relevant. For these reasons, paid development is often more reliable than incurred development for inwards reinsurance, and catastrophes should be reserved separately.</p>
+      <p><b>The underwriting cycle and the reserving cycle.</b> In a soft market, rates fall, terms loosen and tails lengthen. Prior loss ratios are then understated, and the deterioration shows up late. A reserving cycle runs alongside the underwriting cycle. Reserves set in a soft market tend to prove inadequate and are strengthened later through adverse development, often as the market hardens. The swing in reserve adequacy then feeds back into reported results and into how the cycle itself is read. Priors therefore need a rate index, and ideally an allowance for changes in terms as well as price.</p>
+      <p><b>A best estimate needs a range.</b> A best estimate is the mean of the possible outcomes, with no margin. Model, parameter and process uncertainty mean the actual outcome will differ from it. Ranges come from stochastic models, alternative sets of assumptions or scenario testing. In the UK, TAS 100 requires the nature and extent of material uncertainty to be communicated.</p>
+      <p><b>The control cycle closes the loop.</b> Results are tested against diagnostics and against emerging experience. Movements are separated into experience, method changes and assumption changes. Practitioners should guard against anchoring, meaning reliance on one source of information, such as an unchanging benchmark, long after the evidence has moved.</p>
+      <h2>2. Our reserving framework</h2>
+      <p>We have developed a practical reserving framework for a young MGA in four parts. Each follows from the theory above.</p>
+      <h3>Part 1: Facultative and non-proportional treaty, a benchmark-led Bornhuetter–Ferguson</h3>
+      <p>With only a few underwriting years of the portfolio's own data, a chain ladder alone is not credible. We use the incurred BF method by underwriting year, class and placement:</p>
+      <p class="formula"><i>Ultimate = Incurred + (IELR × Premium) × (1 − 1/DTU)</i></p>
+      <p>The <b>development-to-ultimate (DTU) factor</b> is the amount by which claims reported to date must be multiplied to reach the ultimate. Its reciprocal, 1/DTU, is the <b>percentage developed</b>: the share of ultimate claims expected to have been reported by the valuation date. The remainder, (1 − 1/DTU), is the share still to emerge, and this is the weight BF gives to the prior. For example, a DTU of 4.0 means claims are 25% developed, so 75% of the expected loss is still held as IBNR. As a year matures, the DTU falls towards 1.0, the percentage developed rises towards 100%, and the result relies more and more on actual claims.</p>
+      <p>Both key assumptions have been estimated from Lloyd's market benchmarks:</p>
+      <ul>
+      <li><span><b>The initial expected loss ratio (IELR)</b> is weighted to the portfolio's own mix of Lloyd's risk codes. It is converted from a net to a gross basis using acquisition costs, and adjusted for rate change:</span><p class="formula"><i>Gross IELR = Benchmark net ELR ÷ (1 + rate change) × (1 − acquisition cost ratio)</i></p><p>An explicit rate load for softening years keeps the prior consistent with the cycle.</p></li>
+      <li><span><b>Development patterns</b> are Lloyd's benchmark incurred curves, also weighted to the risk-code mix and kept separate for facultative and treaty business.</span></li>
+      </ul>
+      <p>We run a chain ladder alongside BF for comparison. A large gap between the two signals a class where experience is moving away from the prior.</p>
+      <h3>Part 2: Proportional treaty, a two-tier expected loss ratio approach</h3>
+      <p>We use the expected loss ratio (ELR) method for proportional treaty business only. For this business, the two inputs that Bornhuetter–Ferguson relies on, complete incurred claims and a credible development pattern, are not yet available. There are four reasons.</p>
+      <ul>
+      <li><span><b>Claims data are incomplete.</b> On facultative and non-proportional business, claims are notified one by one and recorded claim by claim. Proportional treaty claims mostly arrive through cedant bordereaux and periodic accounts, often in bulk, late and at an aggregate level. Many are not captured individually at all. Projecting an incomplete incurred figure would understate the ultimate, so we do not use reported proportional claims in the projection.</span></li>
+      <li><span><b>There is no reliable development pattern.</b> Market benchmarks are built by risk code and suit facultative and excess-of-loss business. A proportional treaty develops in line with the cedant's own underlying portfolio, plus an extra delay from bordereaux and account reporting. No benchmark captures that combination credibly, and a young portfolio has no history of its own to replace it.</span></li>
+      <li><span><b>The exposure measure is still being estimated.</b> Premium on proportional treaties is based on the estimated premium income (EPI), which is revised as cedants report. That makes a claims-based projection even less stable.</span></li>
+      <li><span><b>Treaty terms carry real information.</b> A proportional reinsurer shares the cedant's loss ratio. The submission, the cedant's loss history and the commission terms are therefore direct evidence of the expected loss ratio. That makes a well-founded ELR a credible estimate in its own right.</span></li>
+      </ul>
+      <p>We have therefore adopted a two-tier approach:</p>
+      <ol>
+      <li><span><b>Direct assessment for the largest treaties.</b> These typically make up more than half of proportional premium. We review the broker submission, the historical experience and the slip terms, and assess the ELR treaty by treaty.</span></li>
+      <li><span><b>A deductions-based ELR for the remaining treaties.</b> A cedant's willingness to pay commission reflects the loss ratio it expects, so we infer the ELR from the deductions:</span><p class="formula"><i>ELR = 1 − Deductions − MGA overriding commission − Profit margin;  Ultimate = ELR × EPI</i></p><p>For example, with 30% deductions, a 10% override and a 5% margin, the ELR is 55%.</p></li>
+      </ol>
+      <p>We see this as a transitional method rather than a permanent one. Until bordereaux are complete, we monitor reported claims against each treaty's expected loss and investigate any treaty where claims exceed it. As the data improve, we plan to blend in claims experience through Bornhuetter–Ferguson.</p>
+      <h3>Part 3: Reserving basis and governance</h3>
+      <p>Reserves are produced gross, undiscounted and on a best-estimate basis with no explicit margin, by underwriting year, class and placement. Any element that does not follow a standard actuarial method is disclosed as such for TAS 100 purposes. The methodology, assumptions and data are documented in a methodology paper that is kept in line with the reserving model and reviewed each time the assumptions change.</p>
+      <h3>Part 4: Quarterly movement and actual vs expected analysis</h3>
+      <p>Each quarter, we analyse the change in the estimated ultimate and loss ratio since the previous quarter. The movement is split into:</p>
+      <ul>
+      <li><span><b>Premium:</b> the effect of new, changed or cancelled premium.</span></li>
+      <li><span><b>Claims experience:</b> the actual vs expected (AvE) analysis. We compare the claims that actually emerged in the quarter with the claims the development pattern expected, by underwriting year, class and placement, and name the large losses that drive any variance.</span></li>
+      <li><span><b>Assumption changes:</b> for example, revised loss ratio selections or IELRs.</span></li>
+      <li><span><b>A residual:</b> shown so the bridge reconciles in full.</span></li>
+      </ul>
+      <p>When assumptions change, we restate the previous quarter so the comparison is like for like. This is the actuarial control cycle in practice. It is also the first test of whether the benchmark assumptions hold for the portfolio.</p>
+      <h2>3. Issues and insights</h2>
+      <p><b>When most of the ultimate is IBNR, the result is a statement about assumptions.</b> In the early years of a growing book, most of the estimated ultimate is not yet backed by reported claims. Proportional business reserved on an ELR is entirely assumption-driven. The headline loss ratio is then mainly a view on benchmark priors, selected treaty loss ratios and development patterns. The quality, documentation and challenge of those assumptions <i>is</i> the reserving exercise.</p>
+      <p><b>BF responds slowly by design.</b> With only a few quarters of development, the youngest year is almost all prior. BF gives emerging experience little weight until development progresses, so a soft-market deterioration can stay hidden for several quarters. Large single losses add a further complication: BF adds them in full on top of an IBNR that already includes a benchmark allowance for large losses. Splitting attritional, large and catastrophe claims makes the result cleaner.</p>
+      <p><b>Benchmarks borrow credibility, and they can carry bias too.</b> Mix-weighted Lloyd's market curves are sound and auditable. However, they reflect the market's own mix of direct, binder and reinsurance business and its claims-reporting chain. Broker-placed business may develop more slowly. Theory's preference for paid patterns in reinsurance points to an easy check: a paid BF or paid chain ladder alongside the incurred method.</p>
+      <p><b>Rate indices capture only part of the cycle.</b> Loading the latest year for rate reductions is good practice. Two gaps remain:</p>
+      <ul>
+      <li><span><b>Earlier years.</b> Assuming no rate change across them leaves their priors untested.</span></li>
+      <li><span><b>Price only.</b> Rate changes say nothing about looser terms, higher deductions or broader cover.</span></li>
+      </ul>
+      <p>Using the portfolio's actual acquisition costs, rather than benchmark ones, also keeps gross priors consistent with the terms actually written. Because of the reserving cycle, the cost of getting this wrong shows up years later.</p>
+      <p><b>Proportional treaty is where reserving risk tends to concentrate.</b> The ELR method does not respond to emerging claims by construction. Once individual treaties show claims above their expected loss, typically after a catastrophe, it needs a deliberate override. The deductions-based formula also assumes every cedant prices for the same stable margin. In practice, soft markets, sliding-scale commissions and profit commissions all weaken that link. Three safeguards help:</p>
+      <ul>
+      <li><span>a floor at reported claims;</span></li>
+      <li><span>event-by-event catastrophe reviews;</span></li>
+      <li><span>a planned move to BF once bordereaux are complete.</span></li>
+      </ul>
+      <p><b>Uncertainty needs numbers, not just words.</b> Many reports describe uncertainty without quantifying it. When assumptions dominate, even simple sensitivities are revealing. A five-point change in the proportional loss ratio moves the ultimate by five per cent of proportional premium. A ten per cent change in the IELRs moves the facultative and treaty IBNR by ten per cent. Adding these to two or three named scenarios meets the TAS 100 requirement and gives management a far better sense of how much the headline estimate could move.</p>
+      <p><b>Data and controls are often where errors arise.</b> Common issues in growing books are:</p>
+      <ul>
+      <li><span>incomplete proportional claims registers;</span></li>
+      <li><span>large volumes of manual reclassification;</span></li>
+      <li><span>a blank selection cell that quietly carries a treaty at zero;</span></li>
+      <li><span>model summaries that do not reconcile to the raw data;</span></li>
+      <li><span>methodology documents that fall out of step with the model.</span></li>
+      </ul>
+      <p>None of these is a problem of method, and all of them can move the result. Completeness checks, reconciliations and version control are as important as the choice of method.</p>
+      <p><b>Some components are easy to overlook.</b> These include claims handling expenses, the unexpired risk reserve and its additional unexpired risk test (especially for a soft-market year with high loss ratio priors), and a net or explicit IBNER view where capacity providers need one.</p>
+      <h2>4. Future developments</h2>
+      <ul>
+      <li><span><b>A credibility roadmap.</b> Track the portfolio's own paid and incurred triangles against the Lloyd's benchmarks every quarter, and define in advance when its own experience becomes credible enough to blend in. This is the most effective protection against anchoring.</span></li>
+      <li><span><b>Paid cross-checks.</b> Run paid BF and paid chain ladder alongside the incurred method for facultative and treaty business.</span></li>
+      <li><span><b>Separate large-loss and catastrophe reserving.</b> Use BF for attritional claims, explicit loads for large losses, and event-based reserving for catastrophes.</span></li>
+      <li><span><b>A complete rate and terms index.</b> Extend it to all underwriting years and include changes in terms, not just price.</span></li>
+      <li><span><b>Proportional treaty moving from ELR to BF.</b> As bordereaux quality improves, blend in claims experience, starting with a floor at reported claims.</span></li>
+      <li><span><b>Quantified uncertainty.</b> Begin with alternative assumptions and a standing scenario library. Move to a Bayesian BF, which treats the benchmark prior as a distribution, and then to Mack or bootstrap models as data accumulate.</span></li>
+      <li><span><b>Automated controls.</b> Add completeness checks on selections, data-to-model reconciliations and a single source of truth for assumptions shared between the model and the methodology paper.</span></li>
+      </ul>
+      <h2>Key takeaways</h2>
+      <ol>
+      <li><span>For a young MGA, reserving is mainly about choosing, documenting and challenging assumptions.</span></li>
+      <li><span>Bornhuetter–Ferguson with Lloyd's benchmarks weighted to the portfolio's risk-code mix is the right starting point. It needs paid cross-checks and a plan for when the portfolio's own data become credible.</span></li>
+      <li><span>Proportional treaty calls for an ELR approach until claims data and patterns become credible, and it must be monitored closely.</span></li>
+      <li><span>The underwriting and reserving cycles move together. Soft-market years are where under-reserving builds up.</span></li>
+      <li><span>A quarterly movement and AvE analysis is the first line of defence. A best estimate without a quantified range is incomplete.</span></li>
+      <li><span>Data and control failures can move the result as much as any choice of method.</span></li>
+      </ol>
+      <p class="signoff"><i>Paolo Vizioli, Senior Actuary, London Market | paolovizioli.github.io | <a href="index.html#contact">Get in touch</a></i></p>
+      <a class="back" href="insights.html">← All insights</a>
+    </article>
+  </div></section>
+</main>
+
+<footer>
+  <div class="wrap"><span>© 2026 Paolo Vizioli</span><span>London, United Kingdom</span></div>
+</footer>
+</body>
+</html>
